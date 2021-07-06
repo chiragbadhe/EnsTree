@@ -1,14 +1,16 @@
 <template>
-  <div class="pt-20">
+  <div>
       <AppHeader />
       <Nuxt />
+      <AppFooter />
   </div>
 </template>
 
 <script>
-import AppHeader from '~/components/AppHeader.vue'
+import AppFooter from '~/components/global/AppFooter.vue'
+import AppHeader from '~/components/global/AppHeader.vue'
 export default {
-  components: { AppHeader },
+  components: { AppHeader, AppFooter },
 
 }
 </script>

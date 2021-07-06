@@ -1,0 +1,115 @@
+<template>
+  <div class="">
+    <!-- MAin Home -->
+    <div class=" h-screen w-screen flex items-center justify-center flex-col text-center">
+      <div class="font-normal text-4xl md:text-6xl tracking-widest text-center">The Only Link For NFTs</div>
+      <div class="font-light  text-xl md:text-3xl mt-4 md:mt-8">View All Collictables At One Place</div>
+      <button
+        class="bg-purple-600 text-xl font-medium  hover:bg-purple-700 rounded-3xl w-1/5 text-white  py-4 px-6 ms:mt-12 mt-6">
+        Get Started
+      </button>
+      <div class="font-base text-base mt-4">Create Links</div>
+    </div>
+    <div class="-mt-52 w-screen mb-24  flex  flex-col items-center justify-center ">
+      <img class=" w-1/4" src="../../assets/img/phone.svg" alt="">
+      <div class="flex flex-col font-bold text-purple-500">
+        <p>|</p>
+        <p>|</p>
+        <p>|</p>
+      </div>
+      <div
+        class=" h-24 w-1/2 border-2 p-1 overflow-x-scroll border-purple-500 bg-white text-2xl font-light rounded-full flex items-center justify-center">
+        <h1 class="pr-0.5">{{link}}</h1>
+        <input v-model="address" class="h-full w-1/2 rounded-xl outline-none	" placeholder="type link here" type="text">
+        <a @click="notEmpty()" target="_blank"
+          class=" bg-purple-600 rounded-full px-4 hover:bg-purple-700 py-2 text-white" :href="link + address">Go</a>
+      </div>
+    </div>
+
+    <!-- HERO1 -->
+    <div id="#about" class="h-screen w-screen text-center flex flex-col space-y-12 md:space-y-0 md:flex-row">
+      <div class="w-full h-full items-center flex flex-col justify-center">
+        <div class="md:m-32 ">
+          <div class="font-medium text-5xl ">Link to all your NFTs</div>
+          <div class="font-normal text-2xl mt-8">Linktree is the launchpad to your latest video, article, recipe, tour,
+            store, website, social post - everywhere you are online.</div>
+        </div>
+      </div>
+      <div class="md:w-full md:h-full items-center flex justify-center">
+        <img src="../../assets/img/image1.svg" alt=""> </div>
+    </div>
+
+    <!-- HERO2 -->
+    <div id="" class="h-screen w-screen flex-col-reverse text-center flex flex-col space-y-12 md:space-y-0 md:flex-row">
+      <div class="w-full h-full items-center flex justify-center">
+        <img src="../../assets/img/image2.svg" alt=""> </div>
+      <div class="w-full h-full items-center flex flex-col justify-center">
+        <div class="md:m-32">
+          <div class="font-medium text-5xl ">Easily managed</div>
+          <div class="font-normal text-2xl mt-8">Creating a EnsTree takes seconds. Use our simple create link option to
+            effortlessly showcase your content.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="" class="h-screen  w-screen text-center flex flex-col space-y-12 md:space-y-0 md:flex-row">
+      <div class="w-full h-full items-center flex flex-col justify-center">
+        <div class="md:m-32">
+          <div class="font-medium text-5xl ">Safe, trusted, public</div>
+          <div class="font-normal text-2xl mt-8">Privacy is non-negotiable. EnsTree doesn’t track any personal data on
+            your visitors, so your EnsTree remains your place on the internet.</div>
+        </div>
+      </div>
+      <div class="w-full h-full items-center flex justify-center">
+        <img src="../../assets/img/image3.svg" alt=""> </div>
+    </div>
+
+  </div>
+</template>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+  }
+
+</style>
+
+
+<script>
+  export default {
+    components: {},
+    data() {
+      return {
+        isOpen: false,
+        baseUrl: '',
+        address: '',
+        link: this.baseUrl + this.address,
+        test: ''
+      };
+    },
+
+    methods: {
+      notEmpty() {
+        if (this.address) {
+          this.isOpen = true
+        } else {
+          this.alert("PLease Enter Address")
+        }
+      },
+    },
+
+    async mounted() {
+      this.baseUrl = window.location.href
+      this.link = this.baseUrl + 'address/'
+
+    }
+  }
+
+</script>

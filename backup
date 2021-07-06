@@ -16,3 +16,12 @@
     </div>
 </div>
 </div>
+
+\
+
+    <div class=" h-24 w-1/2 border-2 p-1  border-black bg-white text-2xl font-light p-4 rounded-full flex items-center justify-center">
+      <h1 class="pr-0.5">{{link}}</h1>
+      <input v-model="address" class="h-full w-1/2 rounded-xl outline-none	" placeholder="type link here" type="text">
+      <a @click="notEmpty()" target="_blank"
+        class=" bg-purple-600 rounded-full px-4 hover:bg-purple-700 py-2 text-white" :href="link + address">Go</a>
+   </div>
