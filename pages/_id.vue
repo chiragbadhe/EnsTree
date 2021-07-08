@@ -48,7 +48,6 @@
     components: {},
     data() {
       return {
-        asset: '',
         address: '',
         data: ''
 
