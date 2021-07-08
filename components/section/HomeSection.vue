@@ -1,28 +1,30 @@
 <template>
   <div class="">
     <!-- MAin Home -->
-    <div class=" h-screen w-screen flex items-center justify-center flex-col text-center">
+    <div class=" h-screen w-screen flex items-center pt-36 md:pt-1  md:justify-center flex-col text-center">
       <div class="font-normal text-4xl md:text-6xl tracking-widest text-center">The Only Link For NFTs</div>
       <div class="font-light  text-xl md:text-3xl mt-4 md:mt-8">View All Collictables At One Place</div>
       <button
-        class="bg-purple-600 text-xl font-medium  hover:bg-purple-700 rounded-3xl w-1/5 text-white  py-4 px-6 ms:mt-12 mt-6">
+        class="bg-purple-600 text-xl font-medium  hover:bg-purple-700 rounded-3xl msdw-1/5 text-white py-1 px-6 md:py-4 md:px-6  ms:mt-12 mt-6">
         Get Started
       </button>
       <div class="font-base text-base mt-4">Create Links</div>
     </div>
     <div class="-mt-52 w-screen mb-24  flex  flex-col items-center justify-center ">
-      <img class=" w-1/4" src="../../assets/img/phone.svg" alt="">
+      <img class=" md:w-1/4  " src="../../assets/img/phone.svg" alt="">
       <div class="flex flex-col font-bold text-purple-500">
         <p>|</p>
         <p>|</p>
         <p>|</p>
       </div>
-      <div
-        class=" h-24 w-1/2 border-2 p-1 overflow-x-scroll border-purple-500 bg-white text-2xl font-light rounded-full flex items-center justify-center">
-        <h1 class="pr-0.5">{{link}}</h1>
-        <input v-model="address" class="h-full w-1/2 rounded-xl outline-none	" placeholder="type link here" type="text">
-        <a @click="notEmpty()" target="_blank"
-          class=" bg-purple-600 rounded-full px-4 hover:bg-purple-700 py-2 text-white" :href="link + address">Go</a>
+  
+      <div class="flex  justify-center flex-col items-center space-y-4">
+        <input v-model.trim="address" class="h-full w-64  border border p-2 border-purple-500 rounded-lg outline-none	" placeholder="type link here" type="text">
+        <button @click="notEmpty" class="bg-purple-600 rounded-full px-4 hover:bg-purple-700 py-2 text-white">Generate Link</button>
+        <span class="flex space-x-4 items-center" v-if="isOpen">
+          <input class="w-64 overflow-x-scroll" id="copyLinkAddress" :value="link + address">
+          <button @click.stop.prevent="copyLink()"><img src="../../assets/img/copy.svg" alt=""></button>
+        </span>
       </div>
     </div>
 
@@ -79,10 +81,17 @@
     font-family: 'Nunito', sans-serif;
   }
 
+
+.swal-button--confirm {
+    background: #6D28D9;
+}
+
 </style>
 
 
 <script>
+import swal from 'sweetalert';
+
   export default {
     components: {},
     data() {
@@ -91,23 +100,38 @@
         baseUrl: '',
         address: '',
         link: this.baseUrl + this.address,
-        test: ''
       };
     },
 
     methods: {
       notEmpty() {
-        if (this.address) {
+        if (this.address.length == 0) {
+          swal("PLease Enter Address")
+        }
+        else {
           this.isOpen = true
-        } else {
-          this.alert("PLease Enter Address")
+        }
+      },
+
+      copyLink() {
+        let testingCodeToCopy =  document.querySelector('#copyLinkAddress')
+        testingCodeToCopy.setAttribute('type', 'text') // 不是 hidden 才能複製
+        testingCodeToCopy.select()
+
+        try {
+          var successful = document.execCommand('copy');
+          var msg = successful ? 'Successful' : 'Unsuccessful';
+          swal('Link was Copied ' + msg);
+        } catch (err) {
+          swal({   dangerMode: true,
+title: "Oops, unable to copy"});
         }
       },
     },
 
     async mounted() {
       this.baseUrl = window.location.href
-      this.link = this.baseUrl + 'address/'
+      this.link = this.baseUrl + ''
 
     }
   }
