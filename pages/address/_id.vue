@@ -1,24 +1,39 @@
 <template>
 
   <section>
+    <div class="w-screen hero items-center flex justify-center border-b-3 flex-col">
+      <!-- Cover pHoto -->
+      <div class="w-full bg-gradient-to-r from-purple-500 via-red-500 to-purple-500 backgroundinfo">
+
+      </div>
+
+      <!-- Image Profile -->
+        <img class="h-44 w-42 absolute rounded-full bg-yellow-500" src="https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg" alt="">
+
+    
+      <!-- description screen -->
+      <div class="w-full flex flex-col backgroundinfo items-center border-b-2 flex justify-center pt-8">
+        <h1 class="text-4xl font-bold ">JHOn sena</h1>
+        <span class="text-base font-semibold mt-2 items-center flex space-x-3"><h1 class="w-36 overflow-x-scroll">{{address}}</h1> <img class="h-5" src="../../assets/img/copy.svg" alt=""></span>
+
+      </div> 
+
+    </div>
     <div class="w-screen items-center flex justify-center">
-      <div class="container w-11/12 my-12 mx-auto  md:px-12">
-        <div class="flex flex-wrap  ">
+      <div class="container w-9/12 my-12 mx-auto ">
+        <div class="grid md:grid-cols-3 md:grid-flow-auto md:gap-16 gap-8 ">
+          <div v-for="(asset, index) in data" :key="index"
+            class=" card  h-auto rounded-2xl justify-center items-center flex flex-col rounded-2xl shadow-lg hover:shadow-2xl border">
+            <div class="h-4/5 rounded-t-2xl "> <img class="h-full rounded-t-2xl p-6" :src="asset.image_url" alt="">
+            </div>
+            <div class="cardinfo w-full w-auto pr-6 pl-6">
+              <h1 class="flex flex-col">
+                <p class="text-lg font-black	">{{asset.id}} </p>
+                <p class="">{{asset.name}}</p>
+              </h1>
+            </div>
 
-          <!-- card  -->
-          <div v-for="(asset, index) in data" :key="index" class=" px-1 md:w-1/2  lg:px-4 lg:w-1/3">
-            <article
-              class=" rounded-xl shadow-lg  h-4/5 w-full flex flex-col justify-center items-center hover:shadow-2xl border-2 ">
-              <img alt="Placeholder" class="block h-auto w-auto p-4 h-5/6 " :src="asset.image_url">
-              <div class="text-black h-full border-t-4 w-full  rounded-lg flex items-center justify-between pr-3 pl-3">
-                <h1 class="flex flex-col">
-                  <p>{{asset.id}} </p>
-                  <p class="">{{asset.name}}</p>
-                </h1>
-              </div>
-            </article>
           </div>
-
         </div>
       </div>
     </div>
@@ -30,9 +45,7 @@
     props: [
       'asset'
     ],
-    components: {
-      Hero
-    },
+    components: {},
     data() {
       return {
         asset: '',
@@ -65,5 +78,29 @@
 </script>
 
 <style>
+  .card {
+    height: 450px;
+  }
+
+  .cardinfo {
+    height: 150px;
+
+  }
+
+  .hero {
+        height: 450px;
+
+  
+  }
+  .backgroundinfo { 
+        height: 225px;
+
+
+  }
+  .descinfo { 
+        height: 225px;
+
+
+  }
 
 </style>

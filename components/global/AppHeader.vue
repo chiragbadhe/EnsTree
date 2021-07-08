@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed flex w-screen justify-center  border bg-white h-16 md:h-24" >
+  <div class=" flex w-screen justify-center  border bg-white h-16 md:h-24" >
     <div class="items-center flex justify-center md:justify-between w-9/12">
 
       <!-- logo Section -->
