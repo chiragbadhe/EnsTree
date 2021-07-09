@@ -8,15 +8,18 @@
       </div>
 
       <!-- Image Profile -->
-        <img class="h-44 w-42 absolute rounded-full bg-yellow-500" src="https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg" alt="">
+      <img class="h-44 w-42 absolute rounded-full bg-yellow-500"
+        src="https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg" alt="">
 
-    
+
       <!-- description screen -->
       <div class="w-full flex flex-col backgroundinfo items-center border-b-2 flex justify-center pt-8">
-        <h1 class="text-4xl font-bold ">JHOn sena</h1>
-        <span class="text-base font-semibold mt-2 items-center flex space-x-3"><h1 class="w-36 overflow-x-scroll">{{address}}</h1> <img class="h-5" src="../../assets/img/copy.svg" alt=""></span>
 
-      </div> 
+        <h1 class="text-4xl font-bold ">JHOn sena</h1>
+        <span class="text-base font-semibold mt-2 items-center flex space-x-3">
+          <h1 class="w-36 overflow-x-scroll">{{address}}</h1> <img class="h-5" src="../../assets/img/copy.svg" alt="">
+        </span>
+      </div>
 
     </div>
     <div class="w-screen items-center flex justify-center">
@@ -25,10 +28,11 @@
           <div v-for="(asset, index) in data" :key="index"
             class=" card  h-auto rounded-2xl justify-center items-center flex flex-col rounded-2xl shadow-lg hover:shadow-2xl border">
             <div class="h-4/5 rounded-t-2xl "> <img class="h-full rounded-t-2xl p-6" :src="asset.image_url" alt="">
+            
             </div>
             <div class="cardinfo w-full w-auto pr-6 pl-6">
               <h1 class="flex flex-col">
-                <p class="text-lg font-black	">{{asset.id}} </p>
+                <p class="text-lg font-black	">{{asset.id}}</p>
                 <p class="">{{asset.name}}</p>
               </h1>
             </div>
@@ -54,9 +58,28 @@
 
       }
     },
+
+    methods: {
+      fetch() {
+
+        const Box = require('3box')
+        const profile = await Box.getProfile('')
+        console.log(profile)
+
+        
+      }
+
+
+
+    },
+
     async mounted() {
       this.address = this.$route.params.id;
       this.baseUrl = window.location.href + this.address
+
+
+     
+
       const fetch = require('node-fetch');
       const url = 'https://api.opensea.io/api/v1/assets?owner=' + (this.address) +
         '&order_direction=desc&offset=0&limit=20';
@@ -88,17 +111,19 @@
   }
 
   .hero {
-        height: 450px;
-
-  
-  }
-  .backgroundinfo { 
-        height: 225px;
+    height: 450px;
 
 
   }
-  .descinfo { 
-        height: 225px;
+
+  .backgroundinfo {
+    height: 225px;
+
+
+  }
+
+  .descinfo {
+    height: 225px;
 
 
   }
