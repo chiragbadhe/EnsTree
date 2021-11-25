@@ -2,7 +2,7 @@
 
  ◾ View all your NFTs a single place \
  ◾ Supports all chains \
- ◾ Easy to use \
+ ◾ Easy to use 
  
 
 ## Build Setup
