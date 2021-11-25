@@ -1,8 +1,8 @@
 # EnsTree 🌲
 
- ◾ View all your NFTs a single place
- ◾ Supports all chains
- ◾ Easy to use
+ ◾ View all your NFTs a single place \
+ ◾ Supports all chains \
+ ◾ Easy to use \
  
 
 ## Build Setup
